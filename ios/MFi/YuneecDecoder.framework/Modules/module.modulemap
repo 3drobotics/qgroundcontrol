@@ -1,0 +1,6 @@
+framework module YuneecDecoder {
+  umbrella header "YuneecDecoder.h"
+
+  export *
+  module * { export * }
+}

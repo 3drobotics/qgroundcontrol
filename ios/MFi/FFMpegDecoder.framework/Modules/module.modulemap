@@ -1,0 +1,6 @@
+framework module FFMpegDecoder {
+  umbrella header "FFMpegDecoder.h"
+
+  export *
+  module * { export * }
+}

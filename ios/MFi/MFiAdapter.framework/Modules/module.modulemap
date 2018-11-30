@@ -1,0 +1,6 @@
+framework module MFiAdapter {
+  umbrella header "MFiAdapter.h"
+
+  export *
+  module * { export * }
+}

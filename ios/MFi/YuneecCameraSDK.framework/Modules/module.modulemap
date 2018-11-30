@@ -1,0 +1,6 @@
+framework module YuneecCameraSDK {
+  umbrella header "YuneecCameraSDK.h"
+
+  export *
+  module * { export * }
+}

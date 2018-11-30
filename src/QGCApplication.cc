@@ -117,6 +117,9 @@
 
 #include "QGCMapEngine.h"
 
+#include "TDRMFiInterface.h"
+//#include <MFiAdapter/MFiAdapter.h>
+
 QGCApplication* QGCApplication::_app = nullptr;
 
 const char* QGCApplication::_deleteAllSettingsKey           = "DeleteAllSettingsNextBoot";
@@ -390,6 +393,17 @@ void QGCApplication::_initCommon(void)
     static const char* kQGCVehicle      = "QGroundControl.Vehicle";
 
     QSettings settings;
+    
+    // 3DR, LRW, Set up the MFi link
+    TDRMFiInterface *mFiInterface = [TDRMFiInterface alloc];
+    [mFiInterface init];
+//    [[MFiConnectionStateAdapter sharedInstance] startMonitorConnectionState];
+//    [[MFiRemoteControllerAdapter sharedInstance] startMonitorRCEvent];
+//
+//    printf("test");
+//    NSLog(@"MFi Debug");
+    //[NSNotificationCenter defaultCenter] addObserver: selector:<#(nonnull SEL)#> name:<#(nullable NSNotificationName)#> object:<#(nullable id)#>
+    
 
     // Register our Qml objects
 

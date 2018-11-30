@@ -1,0 +1,6 @@
+framework module YuneecRemoteControllerSDK {
+  umbrella header "YuneecRemoteControllerSDK.h"
+
+  export *
+  module * { export * }
+}

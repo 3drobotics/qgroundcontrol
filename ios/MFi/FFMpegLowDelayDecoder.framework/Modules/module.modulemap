@@ -1,0 +1,6 @@
+framework module FFMpegLowDelayDecoder {
+  umbrella header "FFMpegLowDelayDecoder.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module FFMpegDemuxer {
+  umbrella header "FFMpegDemuxer.h"
+
+  export *
+  module * { export * }
+}

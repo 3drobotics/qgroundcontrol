@@ -1,0 +1,6 @@
+framework module MediaBase {
+  umbrella header "MediaBase.h"
+
+  export *
+  module * { export * }
+}

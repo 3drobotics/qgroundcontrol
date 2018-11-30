@@ -1,0 +1,6 @@
+framework module YuneecPreviewView {
+  umbrella header "YuneecPreviewView.h"
+
+  export *
+  module * { export * }
+}
