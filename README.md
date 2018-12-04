@@ -6,12 +6,12 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mavlink/qgroundcontrol?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-MFi Setup:
+*MFi Setup:"
 * For Yuneec ST10C and Mantic RC: Add Comm Link for listening port = 14540
 
-Strip Frameworks:
+*Strip Frameworks:*
 This build requires the strip-frameworks.sh file to be placed in the AFNetworking.framework folder
-*bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework/strip-frameworks.sh"
+* bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework/strip-frameworks.sh"
 
 
 *QGroundControl* (QGC) is an intuitive and powerful ground control station (GCS) for UAVs.
