@@ -1,4 +1,13 @@
 libs/lib/Frameworks/GStreamer.framework
+
+# Xcode files
+**/*.xcodeproj/**/*.xccheckout
+**/*.xcodeproj/**/*.xcuserstate
+**/*.xcodeproj/**/xcuserdata
+**/*.xcodeproj/xcuserdata
+**/*.xcworkspace/**/*.xcscmblueprint
+**/*.xcworkspace/xcuserdata
+
 *_qmlcache.qrc
 *.swp
 *.nfs
@@ -23,7 +32,6 @@ tmp
 debug
 release
 /qgroundcontrol
-qgroundcontrol.xcodeproj/**
 doc/html
 doc/doxy.log
 deploy/mac
@@ -60,9 +68,6 @@ src/Airmap/Airmap_api_key.h
 
 *.autosave
 .settings/
-
-# iOS Generated files
-ios/iOSForAppStore-Info.plist
 
 # Generated files
 moc_*
