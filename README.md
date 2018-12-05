@@ -7,7 +7,10 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mavlink/qgroundcontrol?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 *MFi Setup*
-* For Yuneec ST10C and Mantic RC: Add Comm Link for listening port = 14540
+* For Yuneec ST10C and Mantis RC: Add Comm Link for listening port = 14540
+
+*Camera and Video*
+https://github.com/mavlink/qgroundcontrol/blob/master/src/VideoStreaming/README.md
 
 *Strip Frameworks*
 This build requires the strip-frameworks.sh file to be placed in the AFNetworking.framework folder
