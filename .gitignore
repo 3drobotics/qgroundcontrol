@@ -4,6 +4,7 @@ libs/lib/Frameworks/GStreamer.framework
 **/*.xcodeproj/**/*.xccheckout
 **/*.xcodeproj/**/*.xcuserstate
 **/*.xcodeproj/**/xcuserdata
+**/*.xcodeproj/**/xcuserdata/*.*
 **/*.xcodeproj/xcuserdata
 **/*.xcworkspace/**/*.xcscmblueprint
 **/*.xcworkspace/xcuserdata
