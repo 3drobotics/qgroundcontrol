@@ -6,6 +6,18 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mavlink/qgroundcontrol?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+*Development Setup*
+1. Create QGC folder
+2. Clone Dronecode QGroundControl repo: git clone https://github.com/mavlink/qgroundcontrol.git --recursive
+3. cd qgroundcontrol/
+4. git submodule update
+5. Open qgroundcontrol.pro, this will launch Qt Creator
+6. Select the Qt for iOS project, Build item
+7. Build it, Hammer button on bottom left
+8. In Finder, open the "build-qgroundcontrol-Qt_x_yy_zz_for_iOS-Debug" folder
+9. Select QGroundControl.xcodeproj to open up the project in Xcode
+10. Build and run the app
+
 *MFi Setup*
 * For Yuneec ST10C and Mantis RC: Add Comm Link for listening port = 14540
 
