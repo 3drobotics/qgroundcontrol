@@ -6,6 +6,28 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mavlink/qgroundcontrol?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+*Development Setup*
+1. Create QGC folder
+2. Clone Dronecode QGroundControl repo: git clone https://github.com/mavlink/qgroundcontrol.git --recursive
+3. cd qgroundcontrol/
+4. git submodule update
+5. Open qgroundcontrol.pro, this will launch Qt Creator
+6. Select the Qt for iOS project, Build item
+7. Build it, Hammer button on bottom left
+8. In Finder, open the "build-qgroundcontrol-Qt_x_yy_zz_for_iOS-Debug" folder
+9. Select QGroundControl.xcodeproj to open up the project in Xcode
+10. Build and run the app
+
+*Camera and Video*
+https://github.com/mavlink/qgroundcontrol/blob/master/src/VideoStreaming/README.md
+
+*Strip Frameworks*
+This build requires the strip-frameworks.sh file to be placed in the AFNetworking.framework folder
+* bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework/strip-frameworks.sh"
+
+*App Settings For Yuneec ST10C and Mantis RC*
+*MFi Setup Comm: Add Comm Link for listening port = 14540
+* Video streaming: Settings>General>Video Source = RTSP, RTSP URL = rtsp://192.168.42.1/live, Aspect Ratio=1.5
 
 *QGroundControl* (QGC) is an intuitive and powerful ground control station (GCS) for UAVs.
 
