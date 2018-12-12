@@ -20,6 +20,7 @@
 
 *MFi Setup*
 * For Yuneec ST10C and Mantis RC: Add Comm Link for listening port = 14540
+* Video streaming: Settings>General>Video Source = RTSP, RTSP URL = rtsp://192.168.42.1/live, Aspect Ratio=1.5
 
 *Camera and Video*
 https://github.com/mavlink/qgroundcontrol/blob/master/src/VideoStreaming/README.md
