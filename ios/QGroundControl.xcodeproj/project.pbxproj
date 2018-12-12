@@ -2348,22 +2348,22 @@
 		890B831621C17DC3000DA202 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				890B831721C17DC3000DA202 /* YuneecWifiDataTransfer.framework */,
-				890B831821C17DC3000DA202 /* FFMpegLowDelayDemuxer.framework */,
-				890B831921C17DC3000DA202 /* MFiAdapter.framework */,
-				890B831A21C17DC3000DA202 /* FFMpegDemuxer.framework */,
-				890B831B21C17DC3000DA202 /* YuneecPreviewView.framework */,
-				890B831C21C17DC3000DA202 /* YuneecMFiDataTransfer.framework */,
-				890B831D21C17DC3000DA202 /* CocoaAsyncSocket.framework */,
-				890B831E21C17DC3000DA202 /* YuneecCameraSDK.framework */,
-				890B831F21C17DC3000DA202 /* BaseFramework.framework */,
-				890B832021C17DC3000DA202 /* MediaBase.framework */,
-				890B832121C17DC3000DA202 /* FFMpegDecoder.framework */,
-				890B832221C17DC3000DA202 /* YuneecDecoder.framework */,
-				890B832321C17DC3000DA202 /* YuneecDataTransferManager.framework */,
-				890B832421C17DC3000DA202 /* YuneecRemoteControllerSDK.framework */,
-				890B832521C17DC3000DA202 /* FFMpegLowDelayDecoder.framework */,
 				890B832621C17DC3000DA202 /* AFNetworking.framework */,
+				890B831F21C17DC3000DA202 /* BaseFramework.framework */,
+				890B831D21C17DC3000DA202 /* CocoaAsyncSocket.framework */,
+				890B832121C17DC3000DA202 /* FFMpegDecoder.framework */,
+				890B831A21C17DC3000DA202 /* FFMpegDemuxer.framework */,
+				890B832521C17DC3000DA202 /* FFMpegLowDelayDecoder.framework */,
+				890B831821C17DC3000DA202 /* FFMpegLowDelayDemuxer.framework */,
+				890B832021C17DC3000DA202 /* MediaBase.framework */,
+				890B831921C17DC3000DA202 /* MFiAdapter.framework */,
+				890B831E21C17DC3000DA202 /* YuneecCameraSDK.framework */,
+				890B832321C17DC3000DA202 /* YuneecDataTransferManager.framework */,
+				890B832221C17DC3000DA202 /* YuneecDecoder.framework */,
+				890B831C21C17DC3000DA202 /* YuneecMFiDataTransfer.framework */,
+				890B831B21C17DC3000DA202 /* YuneecPreviewView.framework */,
+				890B832421C17DC3000DA202 /* YuneecRemoteControllerSDK.framework */,
+				890B831721C17DC3000DA202 /* YuneecWifiDataTransfer.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -4125,6 +4125,7 @@
 				QMAKE_SHORT_VERSION = 3.4;
 				QT_LIBRARY_SUFFIX = "";
 				SDKROOT = iphoneos;
+				SYMROOT = "../../build-qgroundcontrol-Qt_5_11_0_for_iOS-Debug/";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -4193,6 +4194,101 @@
 					"$(PROJECT_DIR)/3DR\\ MFi/Frameworks",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/qgroundcontrol",
+					.,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/mkspecs/common/uikit,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtLocation,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/libs/mavlink/include/mavlink/v2.0,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/libs/mavlink/include/mavlink/v2.0/ardupilotmega,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/libs/eigen,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/libs/shapelib,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol,
+					include/ui,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/api,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/AnalyzeView,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Camera,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/AutoPilotPlugins,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FlightDisplay,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FlightMap,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FlightMap/Widgets,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FollowMe,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/GPS,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Joystick,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/PlanView,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/MissionManager,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/PositionManager,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/QmlControls,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/QtLocationPlugin,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/QtLocationPlugin/QMLControl,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Settings,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Terrain,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VehicleSetup,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/ViewWidgets,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Audio,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/comm,
+					src/input,
+					src/lib/qmapcontrol,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/uas,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/ui,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/ui/linechart,
+					src/ui/map,
+					src/ui/mapdisplay,
+					src/ui/mission,
+					src/ui/px4_configuration,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/ui/toolbar,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/ui/uas,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/AutoPilotPlugins/Common,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FirmwarePlugin,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Vehicle,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VehicleSetup,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/AutoPilotPlugins/APM,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FirmwarePlugin/APM,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/AutoPilotPlugins/PX4,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FirmwarePlugin/PX4,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FactSystem,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/FactSystem/FactControls,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Airmap/dummy,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VideoStreaming,
+					/Users/lauren/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VideoStreaming/gstqtvideosink,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VideoStreaming/gstqtvideosink/delegates,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VideoStreaming/gstqtvideosink/painters,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VideoStreaming/gstqtvideosink/utils,
+					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/VideoStreaming/ios,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtLocation/5.11.0,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtLocation/5.11.0/QtLocation,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQuickWidgets,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQuick/5.11.0,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQuick/5.11.0/QtQuick,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQuick,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtOpenGL,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtSvg,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtWidgets,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtGui/5.11.0,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtGui/5.11.0/QtGui,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtGui,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtConcurrent,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtPositioning/5.11.0,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtPositioning/5.11.0/QtPositioning,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtPositioning,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQml/5.11.0,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQml/5.11.0/QtQml,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtQml,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtNetwork,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtSql,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtXml,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtTextToSpeech,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtTest,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtCore/5.11.0,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtCore/5.11.0/QtCore,
+					/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/include/QtCore,
+					.,
+					.,
+					"/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/mkspecs/macx-ios-clang",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -4208,6 +4304,7 @@
 				QMAKE_SHORT_VERSION = 3.4;
 				QT_LIBRARY_SUFFIX = _debug;
 				SDKROOT = iphoneos;
+				SYMROOT = "../../build-qgroundcontrol-Qt_5_11_0_for_iOS-Debug/";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
