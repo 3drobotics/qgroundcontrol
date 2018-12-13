@@ -37,7 +37,7 @@
 }
 
 - (void) handleConnectionStateNotification:(NSNotification *) notification {
-    [self startVideo]; // xxx LRW
+    //[self startVideo]; // xxx LRW
     
     // Debugging information
 //    if ([[notification name] isEqualToString:@"MFiConnectionStateNotification"])
@@ -98,7 +98,7 @@
 - (YuneecCameraStreamDataTransfer *)cameraStreamTransfer {
     if (_cameraStreamTransfer == nil) {
         _cameraStreamTransfer = [YuneecDataTransferManager sharedInstance].streamDataTransfer;
-        //xxx _cameraStreamTransfer.cameraStreamDelegate = self;
+        _cameraStreamTransfer.cameraStreamDelegate = self;
         _cameraStreamTransfer.enableLowDelay = YES;
     }
     return _cameraStreamTransfer;
