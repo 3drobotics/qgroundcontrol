@@ -2365,7 +2365,8 @@
 				890B832421C17DC3000DA202 /* YuneecRemoteControllerSDK.framework */,
 				890B831721C17DC3000DA202 /* YuneecWifiDataTransfer.framework */,
 			);
-			path = Frameworks;
+			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		8B46E5BD03216EF704339DB2 /* FirmwarePlugin */ = {
@@ -2871,6 +2872,7 @@
 				30414803F31797EB689AE508 /* Copy Bundle Resources */,
 				99542592E9780B9225F24AA8 /* Embed Frameworks */,
 				890B835921C1812F000DA202 /* Run Arch Clean Script */,
+				8911280921C32ECB008C3249 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -2971,6 +2973,24 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework/strip-frameworks.sh\"\n";
+		};
+		8911280921C32ECB008C3249 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 

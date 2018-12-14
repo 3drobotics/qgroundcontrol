@@ -1,7 +1,7 @@
 libs/lib/Frameworks/GStreamer.framework
 
 # Yuneec MFi Frameworks
-iOS/3DR MFi/Frameworks/*.*
+iOS/3DRMFi/*.*
 
 
 # Xcode files

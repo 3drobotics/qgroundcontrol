@@ -117,6 +117,8 @@
 
 #include "QGCMapEngine.h"
 
+#include "TDRMFiInterface.h"
+
 QGCApplication* QGCApplication::_app = nullptr;
 
 const char* QGCApplication::_deleteAllSettingsKey           = "DeleteAllSettingsNextBoot";
@@ -390,6 +392,10 @@ void QGCApplication::_initCommon(void)
     static const char* kQGCVehicle      = "QGroundControl.Vehicle";
 
     QSettings settings;
+    
+    // 3DR, LRW, Set up the MFi link
+    TDRMFiInterface *mFiInterface = [TDRMFiInterface alloc];
+    [mFiInterface init];
 
     // Register our Qml objects
 
@@ -440,9 +446,7 @@ void QGCApplication::_initCommon(void)
 #ifndef __mobile__
     qmlRegisterType<ViewWidgetController>           (kQGCControllers,                       1, 0, "ViewWidgetController");
     qmlRegisterType<CustomCommandWidgetController>  (kQGCControllers,                       1, 0, "CustomCommandWidgetController");
-#ifndef NO_SERIAL_LINK
     qmlRegisterType<FirmwareUpgradeController>      (kQGCControllers,                       1, 0, "FirmwareUpgradeController");
-#endif
     qmlRegisterType<GeoTagController>               (kQGCControllers,                       1, 0, "GeoTagController");
     qmlRegisterType<MavlinkConsoleController>       (kQGCControllers,                       1, 0, "MavlinkConsoleController");
 #endif
