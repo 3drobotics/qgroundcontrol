@@ -13,10 +13,15 @@
 #import <YuneecDecoder/YuneecDecoder.h>
 #import <YuneecPreviewView/YuneecPreviewView.h>
 
-@interface TDRMFiInterface () <YuneecDecoderDelegate, YuneecCameraStreamDataTransferDelegate>
+#import "GCDAsyncUdpSocket.h"
+
+@interface TDRMFiInterface () <YuneecDecoderDelegate, YuneecCameraStreamDataTransferDelegate, GCDAsyncUdpSocketDelegate>
     @property (strong, nonatomic) YuneecDecoder                     *decoder;
     @property (strong, nonatomic) YuneecCameraStreamDataTransfer    *cameraStreamTransfer;
     @property (strong, nonatomic) YuneecPreviewView                 *previewView;
+
+    @property (strong, nonatomic) GCDAsyncUdpSocket                 *udpSocket;
+
 @end
 
 @implementation TDRMFiInterface
@@ -36,13 +41,14 @@
                                                    object:nil];
         
         // Video stream view
-        _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(0, 0, 300, 300) ];
+//        _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(250, 250, 300, 300) ];
+//
+//        _previewView.translatesAutoresizingMaskIntoConstraints = false;
+//
+//        UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
+//        UIView *mainView = mainWindow.rootViewController.view;
+//        [mainView addSubview:_previewView];
         
-        _previewView.translatesAutoresizingMaskIntoConstraints = false;
-        
-        UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
-        UIView *mainView = mainWindow.rootViewController.view;
-        [mainView addSubview:_previewView];
 //        [[[_previewView.leadingAnchor anchorWithOffsetToAnchor:self.view.leadingAnchor] constraintEqualToConstant:0] setActive:true];
 //        [[[_previewView.topAnchor anchorWithOffsetToAnchor:self.view.topAnchor] constraintEqualToConstant:0] setActive:true];
 //        [[[_previewView.bottomAnchor anchorWithOffsetToAnchor:self.view.bottomAnchor] constraintEqualToConstant:0] setActive:true];
@@ -52,7 +58,12 @@
 }
 
 - (void) handleConnectionStateNotification:(NSNotification *) notification {
-    [self startVideo]; // xxx LRW
+    //[self startVideo]; // xxx LRW
+    
+    if (_udpSocket == nil)
+    {
+        [self setupSocket];
+    }
     
     // Debugging information
 //    if ([[notification name] isEqualToString:@"MFiConnectionStateNotification"])
@@ -75,6 +86,15 @@
                 }
                 [self.cameraStreamTransfer openCameraSteamDataTransfer];
             });
+            
+            // Create UDP connection
+                      
+            //LinkConfiguration* config = new UDPConfiguration(name);
+            
+//            UDPConfiguration* udpConfig = new UDPConfiguration(_defaultUPDLinkName);
+//            udpConfig->setDynamic(true);
+//            SharedLinkConfigurationPointer config = addConfiguration(udpConfig);
+//            createConnectedLink(config);
         }
     }
     else {
@@ -213,8 +233,81 @@ static const uint64_t displayInternal = 20;
                 presentTimeStamp:(int64_t) presentTimeStamp
                        extraData:(NSData * __nullable) extraData
 {
-    [self.decoder decodeVideoFrame:h264Data
-                decompassTimeStamp:decompassTimeStamp
-                  presentTimeStamp:presentTimeStamp];
+//    [self.decoder decodeVideoFrame:h264Data
+//                decompassTimeStamp:decompassTimeStamp
+//                  presentTimeStamp:presentTimeStamp];
+    if (_udpSocket == nil && _udpSocket.isConnected) {
+        NSLog(@"udpSocket sending data");
+        [_udpSocket sendData:h264Data withTimeout:-1 tag:0];
+    }
+}
+
+#pragma mark - UDP socket
+
+- (void)setupSocket {
+    // Setup our socket.
+    // The socket will invoke our delegate methods using the usual delegate paradigm.
+    // However, it will invoke the delegate methods on a specified GCD delegate dispatch queue.
+    //
+    // Now we can configure the delegate dispatch queues however we want.
+    // We could simply use the main dispatc queue, so the delegate methods are invoked on the main thread.
+    // Or we could use a dedicated dispatch queue, which could be helpful if we were doing a lot of processing.
+    //
+    // The best approach for your application will depend upon convenience, requirements and performance.
+    //
+    // For this simple example, we're just going to use the main thread.
+    
+    _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    NSError *error = nil;
+    
+    //if (![_udpSocket bindToPort:666 interface:@"rtsp://192.168.66.1" error:&error])
+    //if (![_udpSocket bindToPort:554 interface:@"rtsp://192.168.42.1/live" error:&error])
+    //if (![_udpSocket connectToHost:@"192.168.42.1" onPort:1554 error:&error])
+    if (![_udpSocket bindToPort:1554 error:&error])
+    {
+        //NSLog(@"udpSocket Error binding: %@", [error localizedDescription]);
+        NSLog(@"udpSocket Error binding");
+        return;
+    }
+    if (![_udpSocket beginReceiving:&error])
+    {
+        NSLog(@"udpSocket Error receiving: %@", [error localizedDescription]);
+        return;
+    }
+    
+//    _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+//    [_udpSocket bindToPort:554 error:&error];
+//    [_udpSocket setPreferIPv4];
+//    [_udpSocket  enableBroadcast:YES error:&error];
+//    [_udpSocket  beginReceiving:&error];
+    
+    NSLog(@"Ready");
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag {
+    // You could add checks here
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error {
+    // You could add checks here
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
+      fromAddress:(NSData *)address
+withFilterContext:(id)filterContext {
+    NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    if (msg)
+    {
+        NSLog(@"udpSocket RECV: %@", msg);
+    }
+    else
+    {
+        NSString *host = nil;
+        uint16_t port = 0;
+        [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
+        
+        NSLog(@"udpSocket RECV: Unknown message from: %@:%hu", host, port);
+    }
 }
 @end

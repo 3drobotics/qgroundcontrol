@@ -396,6 +396,20 @@ void QGCApplication::_initCommon(void)
     // 3DR, LRW, Set up the MFi link
     TDRMFiInterface *mFiInterface = [TDRMFiInterface alloc];
     [mFiInterface init];
+    
+//    // Setup UDP link for streaming MFi video data
+//    LinkConfiguration* linkConfig = toolpobox()->linkManager()->createConfiguration(LinkConfiguration::TypeUdp, "3DRVideoUDP");
+//    //linkConfig->port
+//    SharedLinkConfigurationPointer configPtr = toolbox()->linkManager()->addConfiguration(linkConfig);
+//    LinkInterface* pLink = toolbox()->linkManager()->createConnectedLink(configPtr);
+    
+    
+    //UDPLink* udpLink = new UDPLink(linkConfig)
+    //UDPConfiguration* udpConfig = new UDPConfiguration();
+    //udpConfig->setDynamic(true);
+    //SharedLinkConfigurationPointer config = addConfiguration(linkConfig);
+    //SharedLinkConfigurationPointer config = addConfiguration(udpConfig);
+    //createConnectedLink(config);
 
     // Register our Qml objects
 
