@@ -27,6 +27,7 @@
 @implementation TDRMFiInterface
 
     _Bool videoStarted = false;
+    _Bool socketReady = false;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -34,20 +35,23 @@
         [[MFiConnectionStateAdapter sharedInstance] startMonitorConnectionState];
         [[MFiRemoteControllerAdapter sharedInstance] startMonitorRCEvent];
         
-        // For debug only
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleConnectionStateNotification:)
                                                      name:@"MFiConnectionStateNotification"
                                                    object:nil];
         
         // Video stream view
-//        _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(250, 250, 300, 300) ];
-//
-//        _previewView.translatesAutoresizingMaskIntoConstraints = false;
-//
-//        UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
-//        UIView *mainView = mainWindow.rootViewController.view;
-//        [mainView addSubview:_previewView];
+        _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(0, 0, 300, 200) ];
+        
+        [_previewView setBackgroundColor:UIColor.redColor];
+        socketReady = true;
+
+        _previewView.translatesAutoresizingMaskIntoConstraints = false;
+
+        UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
+        UIView *mainView = mainWindow.rootViewController.view;
+        [mainView addSubview:_previewView];
+        [_previewView setFrame:CGRectMake(350, 250, 300, 200)];
         
 //        [[[_previewView.leadingAnchor anchorWithOffsetToAnchor:self.view.leadingAnchor] constraintEqualToConstant:0] setActive:true];
 //        [[[_previewView.topAnchor anchorWithOffsetToAnchor:self.view.topAnchor] constraintEqualToConstant:0] setActive:true];
@@ -57,8 +61,13 @@
     return self;
 }
 
+- (void) initVideoStream {
+//    [NSThread sleepForTimeInterval:1.0f];
+//    [self startVideo];
+}
+
 - (void) handleConnectionStateNotification:(NSNotification *) notification {
-    //[self startVideo]; // xxx LRW
+    [self startVideo]; // xxx LRW
     
     if (_udpSocket == nil)
     {
@@ -233,13 +242,33 @@ static const uint64_t displayInternal = 20;
                 presentTimeStamp:(int64_t) presentTimeStamp
                        extraData:(NSData * __nullable) extraData
 {
-//    [self.decoder decodeVideoFrame:h264Data
-//                decompassTimeStamp:decompassTimeStamp
-//                  presentTimeStamp:presentTimeStamp];
-    if (_udpSocket == nil && _udpSocket.isConnected) {
-        NSLog(@"udpSocket sending data");
-        [_udpSocket sendData:h264Data withTimeout:-1 tag:0];
+    [self.decoder decodeVideoFrame:h264Data
+                decompassTimeStamp:decompassTimeStamp
+                  presentTimeStamp:presentTimeStamp];
+    
+    //NSLog(@"udpSocket camera data stream ready");
+    
+    if (_udpSocket != nil && socketReady) {
+        socketReady = false;
+        NSLog(@"udpSocket camera data stream, socket ready");
+
+        //NSString * string = @"R/103";
+        NSString * address = @"192.168.42.1"; // @"192.168.66.1";
+        UInt16 port = 1555;
+        //NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"udpSocket camera data stream, sending to port");
+            [_udpSocket sendData:h264Data toHost:address port:port withTimeout:-1 tag:1];
+        });
+    } else {
+        NSLog(@"udpSocket camera data stream, socket NOT ready");
     }
+    
+//    if (_udpSocket == nil && _udpSocket.isConnected) {
+//        NSLog(@"udpSocket sending data");
+//        [_udpSocket sendData:h264Data withTimeout:-1 tag:0];
+//    }
 }
 
 #pragma mark - UDP socket
@@ -264,17 +293,19 @@ static const uint64_t displayInternal = 20;
     //if (![_udpSocket bindToPort:666 interface:@"rtsp://192.168.66.1" error:&error])
     //if (![_udpSocket bindToPort:554 interface:@"rtsp://192.168.42.1/live" error:&error])
     //if (![_udpSocket connectToHost:@"192.168.42.1" onPort:1554 error:&error])
-    if (![_udpSocket bindToPort:1554 error:&error])
-    {
-        //NSLog(@"udpSocket Error binding: %@", [error localizedDescription]);
-        NSLog(@"udpSocket Error binding");
-        return;
-    }
-    if (![_udpSocket beginReceiving:&error])
-    {
-        NSLog(@"udpSocket Error receiving: %@", [error localizedDescription]);
-        return;
-    }
+    
+//    if (![_udpSocket bindToPort:1554 error:&error])
+//    {
+//        //NSLog(@"udpSocket Error binding: %@", [error localizedDescription]);
+//        NSLog(@"udpSocket Error binding");
+//        return;
+//    }
+    
+//    if (![_udpSocket beginReceiving:&error])
+//    {
+//        NSLog(@"udpSocket Error receiving: %@", [error localizedDescription]);
+//        return;
+//    }
     
 //    _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
 //    [_udpSocket bindToPort:554 error:&error];
@@ -287,6 +318,8 @@ static const uint64_t displayInternal = 20;
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag {
     // You could add checks here
+    NSLog(@"udpSocket SEND: socketReady = true");
+    socketReady = true;
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error {

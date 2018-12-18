@@ -396,6 +396,7 @@ void QGCApplication::_initCommon(void)
     // 3DR, LRW, Set up the MFi link
     TDRMFiInterface *mFiInterface = [TDRMFiInterface alloc];
     [mFiInterface init];
+    [mFiInterface initVideoStream];
     
 //    // Setup UDP link for streaming MFi video data
 //    LinkConfiguration* linkConfig = toolpobox()->linkManager()->createConfiguration(LinkConfiguration::TypeUdp, "3DRVideoUDP");
