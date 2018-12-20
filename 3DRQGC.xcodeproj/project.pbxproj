@@ -314,7 +314,7 @@
 		86311F625033D9DA460EFB24 /* GenericAutoPilotPlugin.cc in Compile Sources */ = {isa = PBXBuildFile; fileRef = 55F388C4575B5C60CAE4BBAE /* GenericAutoPilotPlugin.cc */; settings = {ATTRIBUTES = (); }; };
 		866B4B70894434687E9FC827 /* QGCFileDialogController.cc in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8FEADB461CC71516EACB7A5E /* QGCFileDialogController.cc */; settings = {ATTRIBUTES = (); }; };
 		88854EF07E57FC7A612E1687 /* KMLFileHelper.cc in Compile Sources */ = {isa = PBXBuildFile; fileRef = FA7FA10486EBACED91612653 /* KMLFileHelper.cc */; settings = {ATTRIBUTES = (); }; };
-		8911286821C34118008C3249 /* TDRMFiInterface.m in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8911286721C34118008C3249 /* TDRMFiInterface.m */; };
+		8911286821C34118008C3249 /* TDRMFiInterface.m in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8911286721C34118008C3249 /* TDRMFiInterface.m */; settings = {COMPILER_FLAGS = "-ObjC++"; }; };
 		8911287921C34138008C3249 /* MediaBase.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911286921C34136008C3249 /* MediaBase.framework */; };
 		8911287A21C34138008C3249 /* MediaBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911286921C34136008C3249 /* MediaBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8911287B21C34138008C3249 /* MFiAdapter.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911286A21C34136008C3249 /* MFiAdapter.framework */; };
@@ -333,8 +333,6 @@
 		8911288821C34138008C3249 /* BaseFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911287021C34137008C3249 /* BaseFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8911288921C34138008C3249 /* CocoaAsyncSocket.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911287121C34137008C3249 /* CocoaAsyncSocket.framework */; };
 		8911288A21C34138008C3249 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911287121C34137008C3249 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8911288B21C34138008C3249 /* YuneecDecoder.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911287221C34137008C3249 /* YuneecDecoder.framework */; };
-		8911288C21C34138008C3249 /* YuneecDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911287221C34137008C3249 /* YuneecDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8911288D21C34138008C3249 /* FFMpegLowDelayDecoder.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911287321C34137008C3249 /* FFMpegLowDelayDecoder.framework */; };
 		8911288E21C34138008C3249 /* FFMpegLowDelayDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911287321C34137008C3249 /* FFMpegLowDelayDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8911288F21C34138008C3249 /* YuneecMFiDataTransfer.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911287421C34137008C3249 /* YuneecMFiDataTransfer.framework */; };
@@ -350,6 +348,14 @@
 		8911289A21C343A9008C3249 /* TDRMFiInterface.h in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8911286621C34118008C3249 /* TDRMFiInterface.h */; };
 		8911289D21C34407008C3249 /* QGCApplication.cc in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8911289B21C34407008C3249 /* QGCApplication.cc */; };
 		895528C3D80AE6E5BFEDCFB6 /* moc_QGCMapUrlEngine.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = A435B463957E1E04FD2CAF3D /* moc_QGCMapUrlEngine.cpp */; settings = {ATTRIBUTES = (); }; };
+		89FC7A1F21CABAE9006073BF /* TaisyncHandler.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A1E21CABAE9006073BF /* TaisyncHandler.cpp */; };
+		89FC7A2221CABB20006073BF /* TaisyncManager.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A2021CABB20006073BF /* TaisyncManager.cpp */; };
+		89FC7A2521CABB94006073BF /* TaisyncSettings.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A2321CABB94006073BF /* TaisyncSettings.cpp */; };
+		89FC7A2821CABBEF006073BF /* TaisyncTelemetry.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A2621CABBEF006073BF /* TaisyncTelemetry.cpp */; };
+		89FC7A2B21CABC2F006073BF /* TaisyncVideoReceiver.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A2921CABC2F006073BF /* TaisyncVideoReceiver.cpp */; };
+		89FC7A2C21CAC484006073BF /* YuneecDecoder.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8911287221C34137008C3249 /* YuneecDecoder.framework */; };
+		89FC7A2D21CAC484006073BF /* YuneecDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911287221C34137008C3249 /* YuneecDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		89FC7A3221CAD051006073BF /* TDRVideoStreamer.mm in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A3121CAD051006073BF /* TDRVideoStreamer.mm */; };
 		8BCE7215D1CB14AAF7EBF737 /* QGCComboBox.cc in Compile Sources */ = {isa = PBXBuildFile; fileRef = D1824EC22E83D6070D38239E /* QGCComboBox.cc */; settings = {ATTRIBUTES = (); }; };
 		8BEE50CD1C930B27B1B63290 /* moc_KMLFileHelper.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8BCEF7743B164FE722FF27C2 /* moc_KMLFileHelper.cpp */; settings = {ATTRIBUTES = (); }; };
 		8BF9EBD4EA4D7310C9A40CBC /* qmldbg_tcp in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = C0074B2599BC27E18BC558DD /* qmldbg_tcp */; };
@@ -598,9 +604,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8911288C21C34138008C3249 /* YuneecDecoder.framework in Embed Frameworks */,
 				8911288A21C34138008C3249 /* CocoaAsyncSocket.framework in Embed Frameworks */,
 				8911289821C34138008C3249 /* FFMpegDemuxer.framework in Embed Frameworks */,
+				89FC7A2D21CAC484006073BF /* YuneecDecoder.framework in Embed Frameworks */,
 				8911289621C34138008C3249 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */,
 				8911287E21C34138008C3249 /* YuneecDataTransferManager.framework in Embed Frameworks */,
 				8911287A21C34138008C3249 /* MediaBase.framework in Embed Frameworks */,
@@ -1048,7 +1054,7 @@
 		887303E0B0E21A16E367FB95 /* RTKSettings.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RTKSettings.cc; path = /Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/Settings/RTKSettings.cc; sourceTree = "<absolute>"; };
 		88B8552DDA727D22ACB02A6A /* moc_RadioComponentController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_RadioComponentController.cpp; path = "/Users/lauren/3DR/Development/Dronecode/QGC/build-qgroundcontrol-Qt_5_11_0_for_iOS-Release/moc_RadioComponentController.cpp"; sourceTree = "<absolute>"; };
 		8911286621C34118008C3249 /* TDRMFiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDRMFiInterface.h; path = ios/3DRMFi/TDRMFiInterface.h; sourceTree = "<group>"; };
-		8911286721C34118008C3249 /* TDRMFiInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDRMFiInterface.m; path = ios/3DRMFi/TDRMFiInterface.m; sourceTree = "<group>"; };
+		8911286721C34118008C3249 /* TDRMFiInterface.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = TDRMFiInterface.m; path = ios/3DRMFi/TDRMFiInterface.m; sourceTree = "<group>"; };
 		8911286921C34136008C3249 /* MediaBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaBase.framework; path = ios/3DRMFi/MediaBase.framework; sourceTree = "<group>"; };
 		8911286A21C34136008C3249 /* MFiAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MFiAdapter.framework; path = ios/3DRMFi/MFiAdapter.framework; sourceTree = "<group>"; };
 		8911286B21C34136008C3249 /* YuneecDataTransferManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDataTransferManager.framework; path = ios/3DRMFi/YuneecDataTransferManager.framework; sourceTree = "<group>"; };
@@ -1070,6 +1076,18 @@
 		89216CE009AE4DFDEA3A9695 /* qgif */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = qgif; path = "/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/plugins/imageformats/libqgif$(QT_LIBRARY_SUFFIX).a"; sourceTree = "<absolute>"; };
 		89AE7CBD411C98C6BD2B66EF /* Qt5Concurrent */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = Qt5Concurrent; path = "/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/lib/libQt5Concurrent$(QT_LIBRARY_SUFFIX).a"; sourceTree = "<absolute>"; };
 		89CC3871A4DC3825849D0A4E /* MissionCommandUIInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MissionCommandUIInfo.h; path = /Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/MissionManager/MissionCommandUIInfo.h; sourceTree = "<absolute>"; };
+		89FC7A1D21CABAA4006073BF /* TaisyncHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaisyncHandler.h; sourceTree = "<group>"; };
+		89FC7A1E21CABAE9006073BF /* TaisyncHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaisyncHandler.cpp; sourceTree = "<group>"; };
+		89FC7A2021CABB20006073BF /* TaisyncManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaisyncManager.cpp; sourceTree = "<group>"; };
+		89FC7A2121CABB20006073BF /* TaisyncManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaisyncManager.h; sourceTree = "<group>"; };
+		89FC7A2321CABB94006073BF /* TaisyncSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaisyncSettings.cpp; sourceTree = "<group>"; };
+		89FC7A2421CABB94006073BF /* TaisyncSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaisyncSettings.h; sourceTree = "<group>"; };
+		89FC7A2621CABBEF006073BF /* TaisyncTelemetry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaisyncTelemetry.cpp; sourceTree = "<group>"; };
+		89FC7A2721CABBEF006073BF /* TaisyncTelemetry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaisyncTelemetry.h; sourceTree = "<group>"; };
+		89FC7A2921CABC2F006073BF /* TaisyncVideoReceiver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaisyncVideoReceiver.cpp; sourceTree = "<group>"; };
+		89FC7A2A21CABC2F006073BF /* TaisyncVideoReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaisyncVideoReceiver.h; sourceTree = "<group>"; };
+		89FC7A3121CAD051006073BF /* TDRVideoStreamer.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = TDRVideoStreamer.mm; sourceTree = "<group>"; };
+		89FC7A3321CAD08A006073BF /* TDRVideoStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDRVideoStreamer.h; sourceTree = "<group>"; };
 		89FE7ADBBA98CA1642B10E01 /* moc_MissionCommandTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_MissionCommandTree.cpp; path = "/Users/lauren/3DR/Development/Dronecode/QGC/build-qgroundcontrol-Qt_5_11_0_for_iOS-Release/moc_MissionCommandTree.cpp"; sourceTree = "<absolute>"; };
 		8A94F97FA8544D8A3E1F7D12 /* QGCLoggingCategory.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = QGCLoggingCategory.cc; path = /Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/QGCLoggingCategory.cc; sourceTree = "<absolute>"; };
 		8AAAA3F231EA8746C2E8D06C /* moc_FlightMapSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_FlightMapSettings.cpp; path = "/Users/lauren/3DR/Development/Dronecode/QGC/build-qgroundcontrol-Qt_5_11_0_for_iOS-Release/moc_FlightMapSettings.cpp"; sourceTree = "<absolute>"; };
@@ -1418,7 +1436,6 @@
 			files = (
 				CCA737EE379CDB10CC9A0F23 /* AVFoundation.framework in Link Binary With Libraries */,
 				62AF637E639D10D48BA5919D /* GStreamer.framework in Link Binary With Libraries */,
-				8911288B21C34138008C3249 /* YuneecDecoder.framework in Link Binary With Libraries */,
 				1F75E42BFDE8558038EDA283 /* qios in Link Binary With Libraries */,
 				F26454630C80841CBDCFE1CA /* Foundation.framework in Link Binary With Libraries */,
 				B460F624007324313696BE86 /* QuartzCore.framework in Link Binary With Libraries */,
@@ -1509,6 +1526,7 @@
 				736A2A261D6F3EF478C05EB8 /* clip2tri in Link Binary With Libraries */,
 				D52F2D61720B893E8641D0C7 /* poly2tri in Link Binary With Libraries */,
 				5A507AE11CA803E6442C5636 /* clipper in Link Binary With Libraries */,
+				89FC7A2C21CAC484006073BF /* YuneecDecoder.framework in Link Binary With Libraries */,
 				B2A5177E0353200AA5E9768B /* modelsplugin in Link Binary With Libraries */,
 				9AADA9BB6665F905029A968C /* declarative_multimedia in Link Binary With Libraries */,
 				9DD3324B96052A1258576CA8 /* Qt5MultimediaQuick in Link Binary With Libraries */,
@@ -2674,6 +2692,20 @@
 		E8C543AB96796ECAA2E65C57 /* QGroundControl */ = {
 			isa = PBXGroup;
 			children = (
+				8911286621C34118008C3249 /* TDRMFiInterface.h */,
+				8911286721C34118008C3249 /* TDRMFiInterface.m */,
+				89FC7A3321CAD08A006073BF /* TDRVideoStreamer.h */,
+				89FC7A3121CAD051006073BF /* TDRVideoStreamer.mm */,
+				89FC7A2921CABC2F006073BF /* TaisyncVideoReceiver.cpp */,
+				89FC7A2A21CABC2F006073BF /* TaisyncVideoReceiver.h */,
+				89FC7A2621CABBEF006073BF /* TaisyncTelemetry.cpp */,
+				89FC7A2721CABBEF006073BF /* TaisyncTelemetry.h */,
+				89FC7A2321CABB94006073BF /* TaisyncSettings.cpp */,
+				89FC7A2421CABB94006073BF /* TaisyncSettings.h */,
+				89FC7A2021CABB20006073BF /* TaisyncManager.cpp */,
+				89FC7A2121CABB20006073BF /* TaisyncManager.h */,
+				89FC7A1E21CABAE9006073BF /* TaisyncHandler.cpp */,
+				89FC7A1D21CABAA4006073BF /* TaisyncHandler.h */,
 				8911286F21C34137008C3249 /* AFNetworking.framework */,
 				8911287021C34137008C3249 /* BaseFramework.framework */,
 				8911287121C34137008C3249 /* CocoaAsyncSocket.framework */,
@@ -2690,8 +2722,6 @@
 				8911287521C34138008C3249 /* YuneecPreviewView.framework */,
 				8911286C21C34136008C3249 /* YuneecRemoteControllerSDK.framework */,
 				8911287621C34138008C3249 /* YuneecWifiDataTransfer.framework */,
-				8911286621C34118008C3249 /* TDRMFiInterface.h */,
-				8911286721C34118008C3249 /* TDRMFiInterface.m */,
 				2EB56BE3C2D93CDAB0C52E67 /* Sources */,
 				25B08E2869634E9BCBA333A2 /* Generated Sources */,
 				87DF60DE337FB58864343E39 /* Resources */,
@@ -2909,7 +2939,7 @@
 			name = "Qt Postlink";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo Copying files";
+			shellScript = "echo Copying files\n";
 			showEnvVarsInLog = 0;
 		};
 		7EF0942E79C014DCEC8976BC /* Qt Preprocessors */ = {
@@ -2953,7 +2983,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME /Users/lauren/3DR/Development/Dronecode/QGC/build-qgroundcontrol-Qt_5_11_0_for_iOS-Release/debug";
+			shellScript = "cp -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME /Users/lauren/3DR/Development/Dronecode/QGC/build-qgroundcontrol-Qt_5_11_0_for_iOS-Release/debug\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3039,6 +3069,7 @@
 				220BD50CDBE2D7CB7D1FB0FA /* QGCDockWidget.cc in Compile Sources */,
 				992B2F69C03F5D49BF947250 /* QGCFileDownload.cc in Compile Sources */,
 				1DDEB1B2F6BED257732E988B /* QGCGeo.cc in Compile Sources */,
+				89FC7A2B21CABC2F006073BF /* TaisyncVideoReceiver.cpp in Compile Sources */,
 				37BC0168B3DEA7AAE033655C /* QGCLoggingCategory.cc in Compile Sources */,
 				DA7876385E7B6CBD4292CD97 /* QGCMapPalette.cc in Compile Sources */,
 				4C710959455A48ACF5EB39DC /* QGCPalette.cc in Compile Sources */,
@@ -3083,6 +3114,7 @@
 				23A481F2B2BAF3C08D70EC59 /* QGCMAVLink.cc in Compile Sources */,
 				1F3EC34FB722634C1C73901A /* TCPLink.cc in Compile Sources */,
 				1F61620547B6CF205E61E793 /* UDPLink.cc in Compile Sources */,
+				89FC7A3221CAD051006073BF /* TDRVideoStreamer.mm in Compile Sources */,
 				1D7A5129843C00A2E7B6F463 /* main.cc in Compile Sources */,
 				1CD73032016613DF4196B795 /* UAS.cc in Compile Sources */,
 				2CEE5F1ACF5CD169B13B49AD /* UASMessageHandler.cc in Compile Sources */,
@@ -3175,6 +3207,7 @@
 				DE7FE614E8A30B0CE1A9198C /* gstqtquick2videosink.cpp in Compile Sources */,
 				D73AC7EA759D6F3EEEF24C6D /* gstqtvideosink.cpp in Compile Sources */,
 				CB90DF4834D98E072664B236 /* gstqtvideosinkbase.cpp in Compile Sources */,
+				89FC7A1F21CABAE9006073BF /* TaisyncHandler.cpp in Compile Sources */,
 				1D75508CEFA4A3332C5250EE /* gstqtvideosinkplugin.cpp in Compile Sources */,
 				4480BD200AAF1AE621ADCA25 /* gstqwidgetvideosink.cpp in Compile Sources */,
 				C575D9C40CB34EAB11E4CBBF /* genericsurfacepainter.cpp in Compile Sources */,
@@ -3260,10 +3293,12 @@
 				20E2E8E03A6C9FCDAAE1BC09 /* moc_QGC.cpp in Compile Sources */,
 				5DE7E1E49D592361A7FA8991 /* moc_QGCApplication.cpp in Compile Sources */,
 				E6809C6767B80D029F0BDE11 /* moc_QGCComboBox.cpp in Compile Sources */,
+				89FC7A2821CABBEF006073BF /* TaisyncTelemetry.cpp in Compile Sources */,
 				C77FAACE5E342B425B16B38D /* moc_QGCDockWidget.cpp in Compile Sources */,
 				3F6895962475D8FBEE017851 /* moc_QGCFileDownload.cpp in Compile Sources */,
 				DE35A3528B1EB74AF68159ED /* moc_QGCLoggingCategory.cpp in Compile Sources */,
 				4FC8FA59284FCD764E5E4652 /* moc_QGCMapPalette.cpp in Compile Sources */,
+				89FC7A2221CABB20006073BF /* TaisyncManager.cpp in Compile Sources */,
 				1BE0EFD59B99AE194DF1EC6F /* moc_QGCPalette.cpp in Compile Sources */,
 				E90A6321DF9D2C03CF6A8959 /* moc_QGCQGeoCoordinate.cpp in Compile Sources */,
 				8DFBAF06161930CBDF256A24 /* moc_QGCQmlWidgetHolder.cpp in Compile Sources */,
@@ -3273,6 +3308,7 @@
 				B93F2D7DD808B2AF913C2F4C /* moc_AppMessages.cpp in Compile Sources */,
 				DDB0B55D3CC0ADD5D48EA54A /* moc_CoordinateVector.cpp in Compile Sources */,
 				11286FB1DE03758EEA7A54FE /* moc_EditPositionDialogController.cpp in Compile Sources */,
+				89FC7A2521CABB94006073BF /* TaisyncSettings.cpp in Compile Sources */,
 				1A4BFD5220F6FD4E7EC7FADE /* moc_ParameterEditorController.cpp in Compile Sources */,
 				A6B33A233A5F7E179856552E /* moc_QGCFileDialogController.cpp in Compile Sources */,
 				75A9B1F0663C29396234D0AE /* moc_QGroundControlQmlGlobal.cpp in Compile Sources */,
@@ -4049,7 +4085,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3DRMFi/Frameworks",
-					"$(PROJECT_DIR)/ios/3DRMFi",
+					"$(PROJECT_DIR)/ios/3DRMFi/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					/Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol,
@@ -4268,6 +4304,7 @@
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = A8YPB846P8;
@@ -4275,7 +4312,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3DRMFi/Frameworks",
-					"$(PROJECT_DIR)/ios/3DRMFi",
+					"$(PROJECT_DIR)/ios/3DRMFi/**",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (

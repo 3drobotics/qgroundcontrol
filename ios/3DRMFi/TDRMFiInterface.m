@@ -15,12 +15,17 @@
 
 #import "GCDAsyncUdpSocket.h"
 
+#include "TDRVideoStreamer.h"
+
+
 @interface TDRMFiInterface () <YuneecDecoderDelegate, YuneecCameraStreamDataTransferDelegate, GCDAsyncUdpSocketDelegate>
     @property (strong, nonatomic) YuneecDecoder                     *decoder;
     @property (strong, nonatomic) YuneecCameraStreamDataTransfer    *cameraStreamTransfer;
     @property (strong, nonatomic) YuneecPreviewView                 *previewView;
 
     @property (strong, nonatomic) GCDAsyncUdpSocket                 *udpSocket;
+
+    @property (strong, nonatomic) TDRVideoStreamer                 *udpVideoStreamer;
 
 @end
 
@@ -72,6 +77,10 @@
     if (_udpSocket == nil)
     {
         [self setupSocket];
+    }
+    
+    if (_udpVideoStreamer == nil) {
+        _udpVideoStreamer = [TDRVideoStreamer alloc];
     }
     
     // Debugging information
@@ -230,6 +239,25 @@ static const uint64_t displayInternal = 20;
                                    width:rawVideoFrame.width
                                   height:rawVideoFrame.height
                                 pixelFmt:YuneecPreviewPixelFmtTypeI420];
+    
+//    NSData* h264Data = [NSData dataWithBytes:buffer length:bufferSize];
+//    //NSData* h264Data = [NSData dataWithBytesNoCopy:buffer length:bufferSize];
+//    if (_udpSocket != nil && socketReady) {
+//        socketReady = false;
+//        NSLog(@"udpSocket camera data stream, socket ready");
+//
+//        //NSString * string = @"R/103";
+//        NSString * address = @"192.168.66.1";
+//        UInt16 port = 1555;
+//        //NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSLog(@"udpSocket camera data stream, sending to port");
+//            [_udpSocket sendData:h264Data toHost:address port:port withTimeout:-1 tag:1];
+//        });
+//    } else {
+//        NSLog(@"udpSocket camera data stream, socket NOT ready");
+//    }
     free(buffer);
 }
 
@@ -246,14 +274,19 @@ static const uint64_t displayInternal = 20;
                 decompassTimeStamp:decompassTimeStamp
                   presentTimeStamp:presentTimeStamp];
     
-    //NSLog(@"udpSocket camera data stream ready");
+    if (_udpVideoStreamer != nil) {
+        NSLog(@"_udpVideoStreamer write data");
+        [_udpVideoStreamer writeVideoData:h264Data];
+    }
     
+    //NSLog(@"udpSocket camera data stream ready");
+    /*
     if (_udpSocket != nil && socketReady) {
         socketReady = false;
         NSLog(@"udpSocket camera data stream, socket ready");
 
         //NSString * string = @"R/103";
-        NSString * address = @"192.168.42.1"; // @"192.168.66.1";
+        NSString * address = @"localhost"; // @"192.168.66.1";
         UInt16 port = 1555;
         //NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
         
@@ -264,6 +297,7 @@ static const uint64_t displayInternal = 20;
     } else {
         NSLog(@"udpSocket camera data stream, socket NOT ready");
     }
+     */
     
 //    if (_udpSocket == nil && _udpSocket.isConnected) {
 //        NSLog(@"udpSocket sending data");
@@ -274,6 +308,8 @@ static const uint64_t displayInternal = 20;
 #pragma mark - UDP socket
 
 - (void)setupSocket {
+    
+    
     // Setup our socket.
     // The socket will invoke our delegate methods using the usual delegate paradigm.
     // However, it will invoke the delegate methods on a specified GCD delegate dispatch queue.

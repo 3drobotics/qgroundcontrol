@@ -25,6 +25,9 @@
 #include <QDateTime>
 #include <QSysInfo>
 
+#define QGC_GST_TAISYNC_ENABLED         1
+#define TAISYNC_VIDEO_UDP_PORT          5601
+
 QGC_LOGGING_CATEGORY(VideoReceiverLog, "VideoReceiverLog")
 
 #if defined(QGC_GST_STREAMING)
@@ -226,6 +229,8 @@ VideoReceiver::start()
 #if defined(QGC_GST_STREAMING)
     _stop = false;
     qCDebug(VideoReceiverLog) << "start()";
+    
+    bool isTaisyncUSB = QGC_GST_TAISYNC_ENABLED;
 
     if (_uri.isEmpty()) {
         qCritical() << "VideoReceiver::start() failed because URI is not specified";
@@ -242,9 +247,9 @@ VideoReceiver::start()
 
     _starting = true;
 
-    bool isUdp  = _uri.contains("udp://");
-    bool isRtsp = _uri.contains("rtsp://");
-    bool isTCP  = _uri.contains("tcp://");
+    bool isUdp  = _uri.contains("udp://")   && !isTaisyncUSB;
+    bool isRtsp = _uri.contains("rtsp://")  && !isTaisyncUSB;
+    bool isTCP  = _uri.contains("tcp://")   && !isTaisyncUSB;
 
     //-- For RTSP and TCP, check to see if server is there first
     if(!_serverPresent && (isRtsp || isTCP)) {
@@ -269,7 +274,7 @@ VideoReceiver::start()
             break;
         }
 
-        if(isUdp) {
+        if(isUdp || isTaisyncUSB) {
             dataSource = gst_element_factory_make("udpsrc", "udp-source");
         } else if(isTCP) {
             dataSource = gst_element_factory_make("tcpclientsrc", "tcpclient-source");
@@ -288,6 +293,11 @@ VideoReceiver::start()
                 break;
             }
             g_object_set(G_OBJECT(dataSource), "uri", qPrintable(_uri), "caps", caps, nullptr);
+        } else if(isTaisyncUSB) {
+            //QString uri = QString("0.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
+            QString uri = QString("192.168.42.1:%1").arg(TAISYNC_VIDEO_UDP_PORT);
+            qCDebug(VideoReceiverLog) << "Taisync URI:" << uri;
+            g_object_set(static_cast<gpointer>(dataSource), "port", TAISYNC_VIDEO_UDP_PORT, nullptr);
         } else if(isTCP) {
             QUrl url(_uri);
             g_object_set(G_OBJECT(dataSource), "host", qPrintable(url.host()), "port", url.port(), nullptr );
@@ -302,9 +312,11 @@ VideoReceiver::start()
                 break;
             }
         } else {
-            if ((demux = gst_element_factory_make("rtph264depay", "rtp-h264-depacketizer")) == nullptr) {
-                qCritical() << "VideoReceiver::start() failed. Error with gst_element_factory_make('rtph264depay')";
-                break;
+            if(!isTaisyncUSB) {
+                if ((demux = gst_element_factory_make("rtph264depay", "rtp-h264-depacketizer")) == nullptr) {
+                    qCritical() << "VideoReceiver::start() failed. Error with gst_element_factory_make('rtph264depay')";
+                    break;
+                }
             }
         }
 
@@ -335,13 +347,23 @@ VideoReceiver::start()
             break;
         }
 
-        gst_bin_add_many(GST_BIN(_pipeline), dataSource, demux, parser, _tee, queue, decoder, queue1, _videoSink, nullptr);
+        if(isTaisyncUSB) {
+            gst_bin_add_many(GST_BIN(_pipeline), dataSource, parser, _tee, queue, decoder, queue1, _videoSink, nullptr);
+        } else {
+            gst_bin_add_many(GST_BIN(_pipeline), dataSource, demux, parser, _tee, queue, decoder, queue1, _videoSink, nullptr);
+        }
         pipelineUp = true;
 
         if(isUdp) {
             // Link the pipeline in front of the tee
             if(!gst_element_link_many(dataSource, demux, parser, _tee, queue, decoder, queue1, _videoSink, nullptr)) {
                 qCritical() << "Unable to link UDP elements.";
+                break;
+            }
+        } else if(isTaisyncUSB) {
+            // Link the pipeline in front of the tee
+            if(!gst_element_link_many(dataSource, parser, _tee, queue, decoder, queue1, _videoSink, nullptr)) {
+                qCritical() << "Unable to link Taisync USB elements.";
                 break;
             }
         } else if (isTCP) {
@@ -529,6 +551,9 @@ void
 VideoReceiver::_handleStateChanged() {
     if(_pipeline) {
         _streaming = GST_STATE(_pipeline) == GST_STATE_PLAYING;
+        if (_streaming == true) {
+            qCDebug(VideoReceiverLog) << "State changed, _streaming true:" << _streaming;
+        }
         qCDebug(VideoReceiverLog) << "State changed, _streaming:" << _streaming;
     }
 }
