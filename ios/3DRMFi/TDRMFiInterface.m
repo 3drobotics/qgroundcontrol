@@ -48,7 +48,7 @@
         // Video stream view
         _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(0, 0, 300, 200) ];
         
-        [_previewView setBackgroundColor:UIColor.redColor];
+        [_previewView setBackgroundColor:UIColor.blackColor];
         socketReady = true;
 
         _previewView.translatesAutoresizingMaskIntoConstraints = false;
@@ -56,12 +56,15 @@
         UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
         UIView *mainView = mainWindow.rootViewController.view;
         [mainView addSubview:_previewView];
-        [_previewView setFrame:CGRectMake(350, 250, 300, 200)];
         
-//        [[[_previewView.leadingAnchor anchorWithOffsetToAnchor:self.view.leadingAnchor] constraintEqualToConstant:0] setActive:true];
-//        [[[_previewView.topAnchor anchorWithOffsetToAnchor:self.view.topAnchor] constraintEqualToConstant:0] setActive:true];
-//        [[[_previewView.bottomAnchor anchorWithOffsetToAnchor:self.view.bottomAnchor] constraintEqualToConstant:0] setActive:true];
-//        [[[_previewView.trailingAnchor anchorWithOffsetToAnchor:self.view.trailingAnchor] constraintEqualToConstant:0] setActive:true];
+        CGFloat height = mainView.frame.size.height/5;
+        CGFloat width = height * 1.5;
+        [_previewView setFrame:CGRectMake(10, mainView.frame.size.height - height - 10, width, height)];
+        
+        //[[[_previewView.leadingAnchor anchorWithOffsetToAnchor:mainView.leadingAnchor] constraintEqualToConstant:100] setActive:true];
+        //[[[_previewView.topAnchor anchorWithOffsetToAnchor:mainView.topAnchor] constraintEqualToConstant:0] setActive:true];
+        //[[[_previewView.bottomAnchor anchorWithOffsetToAnchor:mainView.bottomAnchor] constraintEqualToConstant:100] setActive:true];
+        //[[[_previewView.trailingAnchor anchorWithOffsetToAnchor:mainView.trailingAnchor] constraintEqualToConstant:0] setActive:true];
     }
     return self;
 }

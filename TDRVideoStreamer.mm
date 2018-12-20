@@ -27,7 +27,7 @@ QUdpSocket*     _udpVideoSocket     = nullptr;
 
 - (instancetype)init {
     if (self = [super init]) {
-        
+
     }
     return self;
 }
@@ -69,7 +69,8 @@ QUdpSocket*     _udpVideoSocket     = nullptr;
     QByteArray bytesIn = QByteArray(dataBytes, len);
     if (_udpVideoSocket != nil && bytesIn != nil) {
         NSLog(@"TDRVideoStreamer writeVideoData");
-        QHostAddress hostAddress = QHostAddress(QString("192.168.42.1"));
+        //QHostAddress hostAddress = QHostAddress(QString("192.168.42.1"));
+        QHostAddress hostAddress = QHostAddress(QString("127.0.0.0"));
         _udpVideoSocket->writeDatagram(bytesIn, hostAddress, TAISYNC_VIDEO_UDP_PORT);
         //_udpVideoSocket->writeDatagram(bytesIn, QHostAddress::LocalHost, TAISYNC_VIDEO_UDP_PORT);
     }

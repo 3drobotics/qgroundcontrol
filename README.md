@@ -27,7 +27,7 @@ This build requires the strip-frameworks.sh file to be placed in the AFNetworkin
 
 *App Settings For Yuneec ST10C and Mantis RC*
 *MFi Setup Comm: Add Comm Link for listening port = 14540
-* Video streaming: Settings>General>Video Source = RTSP, RTSP URL = rtsp://192.168.42.1/live, Aspect Ratio=1.5
+* Video streaming: Settings>General>Video Source = RTSP, RTSP URL = rtsp://192.168.42.1:554/live, Aspect Ratio=1.5
 
 *QGroundControl* (QGC) is an intuitive and powerful ground control station (GCS) for UAVs.
 
