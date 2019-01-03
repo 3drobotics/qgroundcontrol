@@ -13,6 +13,7 @@
 #include "QGCApplication.h"
 #include "VideoManager.h"
 
+
 //-----------------------------------------------------------------------------
 TaisyncManager::TaisyncManager(QGCApplication* app, QGCToolbox* toolbox)
 : QGCTool(app, toolbox)

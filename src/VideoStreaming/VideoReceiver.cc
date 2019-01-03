@@ -294,9 +294,9 @@ VideoReceiver::start()
             }
             g_object_set(G_OBJECT(dataSource), "uri", qPrintable(_uri), "caps", caps, nullptr);
         } else if(isTaisyncUSB) {
-            //QString uri = QString("0.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
+            QString uri = QString("0.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
             //QString uri = QString("192.168.42.1:%1").arg(TAISYNC_VIDEO_UDP_PORT);
-            QString uri = QString("127.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
+            //QString uri = QString("127.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
             qCDebug(VideoReceiverLog) << "Taisync URI:" << uri;
             g_object_set(static_cast<gpointer>(dataSource), "port", TAISYNC_VIDEO_UDP_PORT, nullptr);
         } else if(isTCP) {

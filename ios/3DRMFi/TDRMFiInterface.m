@@ -34,6 +34,10 @@
     _Bool videoStarted = false;
     _Bool socketReady = false;
 
+    _Bool largeVideoMode = false;
+    CGSize smallVideoSize;
+    CGSize largeVideoSize;
+
 - (instancetype)init {
     if (self = [super init]) {
         
@@ -57,16 +61,43 @@
         UIView *mainView = mainWindow.rootViewController.view;
         [mainView addSubview:_previewView];
         
-        CGFloat height = mainView.frame.size.height/5;
+        CGFloat height = mainView.frame.size.height * 0.6;
         CGFloat width = height * 1.5;
+        largeVideoSize = CGSizeMake(width, height);
+        
+        height = mainView.frame.size.height/5;
+        width = height * 1.5;
+        smallVideoSize = CGSizeMake(width, height);
+        
         [_previewView setFrame:CGRectMake(10, mainView.frame.size.height - height - 10, width, height)];
         
+        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(handleSingleTap:)];
+        singleFingerTap.numberOfTapsRequired = 1;
+        [_previewView addGestureRecognizer:singleFingerTap];
+
         //[[[_previewView.leadingAnchor anchorWithOffsetToAnchor:mainView.leadingAnchor] constraintEqualToConstant:100] setActive:true];
         //[[[_previewView.topAnchor anchorWithOffsetToAnchor:mainView.topAnchor] constraintEqualToConstant:0] setActive:true];
         //[[[_previewView.bottomAnchor anchorWithOffsetToAnchor:mainView.bottomAnchor] constraintEqualToConstant:100] setActive:true];
         //[[[_previewView.trailingAnchor anchorWithOffsetToAnchor:mainView.trailingAnchor] constraintEqualToConstant:0] setActive:true];
     }
     return self;
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    //CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    
+    UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
+    UIView *mainView = mainWindow.rootViewController.view;
+    
+    largeVideoMode = !largeVideoMode;
+    if (largeVideoMode == true) {
+        CGFloat x = mainView.frame.size.width/2 - largeVideoSize.width/2;
+        CGFloat y = mainView.frame.size.height/2 - largeVideoSize.height/2;
+        [_previewView setFrame:CGRectMake(x, y, largeVideoSize.width, largeVideoSize.height)];
+    } else {
+        [_previewView setFrame:CGRectMake(10, mainView.frame.size.height - smallVideoSize.height - 10, smallVideoSize.width, smallVideoSize.height)];
+    }
 }
 
 - (void) initVideoStream {

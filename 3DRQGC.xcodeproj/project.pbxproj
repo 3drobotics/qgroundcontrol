@@ -347,6 +347,7 @@
 		8911289821C34138008C3249 /* FFMpegDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8911287821C34138008C3249 /* FFMpegDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8911289A21C343A9008C3249 /* TDRMFiInterface.h in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8911286621C34118008C3249 /* TDRMFiInterface.h */; };
 		8911289D21C34407008C3249 /* QGCApplication.cc in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8911289B21C34407008C3249 /* QGCApplication.cc */; };
+		894A6A6121CD939700192EB0 /* TDRVideoReceiver.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 894A6A5F21CD939700192EB0 /* TDRVideoReceiver.cpp */; };
 		895528C3D80AE6E5BFEDCFB6 /* moc_QGCMapUrlEngine.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = A435B463957E1E04FD2CAF3D /* moc_QGCMapUrlEngine.cpp */; settings = {ATTRIBUTES = (); }; };
 		89FC7A1F21CABAE9006073BF /* TaisyncHandler.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A1E21CABAE9006073BF /* TaisyncHandler.cpp */; };
 		89FC7A2221CABB20006073BF /* TaisyncManager.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 89FC7A2021CABB20006073BF /* TaisyncManager.cpp */; };
@@ -1074,6 +1075,8 @@
 		8911289B21C34407008C3249 /* QGCApplication.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = QGCApplication.cc; path = src/QGCApplication.cc; sourceTree = "<group>"; };
 		8911289C21C34407008C3249 /* QGCApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QGCApplication.h; path = src/QGCApplication.h; sourceTree = "<group>"; };
 		89216CE009AE4DFDEA3A9695 /* qgif */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = qgif; path = "/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/plugins/imageformats/libqgif$(QT_LIBRARY_SUFFIX).a"; sourceTree = "<absolute>"; };
+		894A6A5F21CD939700192EB0 /* TDRVideoReceiver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TDRVideoReceiver.cpp; sourceTree = "<group>"; };
+		894A6A6021CD939700192EB0 /* TDRVideoReceiver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = TDRVideoReceiver.h; sourceTree = "<group>"; };
 		89AE7CBD411C98C6BD2B66EF /* Qt5Concurrent */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = Qt5Concurrent; path = "/Users/lauren/3DR/Development/Dronecode/Qt/5.11.0/ios/lib/libQt5Concurrent$(QT_LIBRARY_SUFFIX).a"; sourceTree = "<absolute>"; };
 		89CC3871A4DC3825849D0A4E /* MissionCommandUIInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MissionCommandUIInfo.h; path = /Users/lauren/3DR/Development/Dronecode/QGC/qgroundcontrol/src/MissionManager/MissionCommandUIInfo.h; sourceTree = "<absolute>"; };
 		89FC7A1D21CABAA4006073BF /* TaisyncHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaisyncHandler.h; sourceTree = "<group>"; };
@@ -2692,6 +2695,8 @@
 		E8C543AB96796ECAA2E65C57 /* QGroundControl */ = {
 			isa = PBXGroup;
 			children = (
+				894A6A5F21CD939700192EB0 /* TDRVideoReceiver.cpp */,
+				894A6A6021CD939700192EB0 /* TDRVideoReceiver.h */,
 				8911286621C34118008C3249 /* TDRMFiInterface.h */,
 				8911286721C34118008C3249 /* TDRMFiInterface.m */,
 				89FC7A3321CAD08A006073BF /* TDRVideoStreamer.h */,
@@ -3248,6 +3253,7 @@
 				5136EB0D45281B614E85AB4F /* moc_QGCCameraControl.cpp in Compile Sources */,
 				75590454B36CF68C6EFD8911 /* moc_QGCCameraManager.cpp in Compile Sources */,
 				CCDD9E49BC5DED30EC7091C1 /* moc_VideoManager.cpp in Compile Sources */,
+				894A6A6121CD939700192EB0 /* TDRVideoReceiver.cpp in Compile Sources */,
 				EBE10972A2446D0E95F1E02D /* moc_ValuesWidgetController.cpp in Compile Sources */,
 				3F25BA0713C1BD5A571D85BD /* moc_FollowMe.cpp in Compile Sources */,
 				6FA18128EC58A99CD996BB8F /* moc_Joystick.cpp in Compile Sources */,

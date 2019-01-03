@@ -9,10 +9,11 @@
 
 #include <QUdpSocket>
 #include "TDRVideoStreamer.h"
+#include "TDRVideoReceiver.h"
 
 #include "TaisyncHandler.h"
 
-#define TAISYNC_VIDEO_UDP_PORT      5601
+#define TDR_VIDEO_UDP_PORT      5601
 
 @interface TDRVideoStreamer ()
 
@@ -24,6 +25,7 @@
 @implementation TDRVideoStreamer
 
 QUdpSocket*     _udpVideoSocket     = nullptr;
+TDRVideoReceiver*   _tdrVideo       = nullptr;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -33,6 +35,12 @@ QUdpSocket*     _udpVideoSocket     = nullptr;
 }
 
 - (void) writeVideoData:(NSData *) h264Data {
+//    if (_tdrVideo == nil) {
+//        QObject* qo = new QObject();
+//        _tdrVideo = new TDRVideoReceiver(qo);
+//        _tdrVideo->start();
+//    }
+    
     if (_udpVideoSocket == nil) {
         _udpVideoSocket = new QUdpSocket();
         //emit connected();
@@ -71,7 +79,7 @@ QUdpSocket*     _udpVideoSocket     = nullptr;
         NSLog(@"TDRVideoStreamer writeVideoData");
         //QHostAddress hostAddress = QHostAddress(QString("192.168.42.1"));
         QHostAddress hostAddress = QHostAddress(QString("127.0.0.0"));
-        _udpVideoSocket->writeDatagram(bytesIn, hostAddress, TAISYNC_VIDEO_UDP_PORT);
+        _udpVideoSocket->writeDatagram(bytesIn, hostAddress, TDR_VIDEO_UDP_PORT);
         //_udpVideoSocket->writeDatagram(bytesIn, QHostAddress::LocalHost, TAISYNC_VIDEO_UDP_PORT);
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Lauren on 12/19/18.
 //
 
-
 #ifndef TDRVideoStreamer_h
 #define TDRVideoStreamer_h
 
