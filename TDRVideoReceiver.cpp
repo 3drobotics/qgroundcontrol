@@ -44,7 +44,9 @@ void
 TDRVideoReceiver::_readBytes()
 {
     QByteArray bytesIn = _tcpSocket->read(_tcpSocket->bytesAvailable());
-    _udpVideoSocket->writeDatagram(bytesIn, QHostAddress::LocalHost, TDR_VIDEO_UDP_PORT);
+    QHostAddress hostAddress = QHostAddress(QString("127.0.0.1"));
+    _udpVideoSocket->writeDatagram(bytesIn, hostAddress, TDR_VIDEO_UDP_PORT);
+    //_udpVideoSocket->writeDatagram(bytesIn, QHostAddress::LocalHost, TDR_VIDEO_UDP_PORT);
 }
 
 //-----------------------------------------------------------------------------

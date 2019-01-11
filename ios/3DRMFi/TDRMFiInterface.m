@@ -31,6 +31,8 @@
 
 @implementation TDRMFiInterface
 
+    _Bool mfiVideoEnabled = true;
+
     _Bool videoStarted = false;
     _Bool socketReady = false;
 
@@ -49,33 +51,35 @@
                                                      name:@"MFiConnectionStateNotification"
                                                    object:nil];
         
-        // Video stream view
-        _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(0, 0, 300, 200) ];
-        
-        [_previewView setBackgroundColor:UIColor.blackColor];
-        socketReady = true;
+        if (mfiVideoEnabled == true) {
+            // Video stream view
+            _previewView = [[YuneecPreviewView alloc] initWithFrame: CGRectMake(0, 0, 300, 200) ];
+            
+            [_previewView setBackgroundColor:UIColor.blackColor];
+            socketReady = true;
 
-        _previewView.translatesAutoresizingMaskIntoConstraints = false;
+            _previewView.translatesAutoresizingMaskIntoConstraints = false;
 
-        UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
-        UIView *mainView = mainWindow.rootViewController.view;
-        [mainView addSubview:_previewView];
+            UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
+            UIView *mainView = mainWindow.rootViewController.view;
+            [mainView addSubview:_previewView];
+            
+            CGFloat height = mainView.frame.size.height * 0.6;
+            CGFloat width = height * 1.5;
+            largeVideoSize = CGSizeMake(width, height);
+            
+            height = mainView.frame.size.height/5;
+            width = height * 1.5;
+            smallVideoSize = CGSizeMake(width, height);
+            
+            [_previewView setFrame:CGRectMake(10, mainView.frame.size.height - height - 10, width, height)];
+            
+            UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                    action:@selector(handleSingleTap:)];
+            singleFingerTap.numberOfTapsRequired = 1;
+            [_previewView addGestureRecognizer:singleFingerTap];
+        }
         
-        CGFloat height = mainView.frame.size.height * 0.6;
-        CGFloat width = height * 1.5;
-        largeVideoSize = CGSizeMake(width, height);
-        
-        height = mainView.frame.size.height/5;
-        width = height * 1.5;
-        smallVideoSize = CGSizeMake(width, height);
-        
-        [_previewView setFrame:CGRectMake(10, mainView.frame.size.height - height - 10, width, height)];
-        
-        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(handleSingleTap:)];
-        singleFingerTap.numberOfTapsRequired = 1;
-        [_previewView addGestureRecognizer:singleFingerTap];
-
         //[[[_previewView.leadingAnchor anchorWithOffsetToAnchor:mainView.leadingAnchor] constraintEqualToConstant:100] setActive:true];
         //[[[_previewView.topAnchor anchorWithOffsetToAnchor:mainView.topAnchor] constraintEqualToConstant:0] setActive:true];
         //[[[_previewView.bottomAnchor anchorWithOffsetToAnchor:mainView.bottomAnchor] constraintEqualToConstant:100] setActive:true];
@@ -106,7 +110,12 @@
 }
 
 - (void) handleConnectionStateNotification:(NSNotification *) notification {
-    [self startVideo]; // xxx LRW
+    
+    if (mfiVideoEnabled == true) {
+        [self startVideo];
+    }
+    return;
+    
     
     if (_udpSocket == nil)
     {

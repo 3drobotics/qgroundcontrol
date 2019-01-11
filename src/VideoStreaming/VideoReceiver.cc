@@ -25,7 +25,7 @@
 #include <QDateTime>
 #include <QSysInfo>
 
-#define QGC_GST_TAISYNC_ENABLED         1
+#define QGC_GST_TAISYNC_ENABLED         0
 #define TAISYNC_VIDEO_UDP_PORT          5601
 
 QGC_LOGGING_CATEGORY(VideoReceiverLog, "VideoReceiverLog")
@@ -294,7 +294,7 @@ VideoReceiver::start()
             }
             g_object_set(G_OBJECT(dataSource), "uri", qPrintable(_uri), "caps", caps, nullptr);
         } else if(isTaisyncUSB) {
-            QString uri = QString("0.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
+            QString uri = QString("127.0.0.1:%1").arg(TAISYNC_VIDEO_UDP_PORT);
             //QString uri = QString("192.168.42.1:%1").arg(TAISYNC_VIDEO_UDP_PORT);
             //QString uri = QString("127.0.0.0:%1").arg(TAISYNC_VIDEO_UDP_PORT);
             qCDebug(VideoReceiverLog) << "Taisync URI:" << uri;
