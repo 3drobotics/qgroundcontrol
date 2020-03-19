@@ -117,6 +117,8 @@
 
 #include "QGCMapEngine.h"
 
+#include "TDRMFiInterface.h"
+
 QGCApplication* QGCApplication::_app = nullptr;
 
 const char* QGCApplication::_deleteAllSettingsKey           = "DeleteAllSettingsNextBoot";
@@ -390,6 +392,25 @@ void QGCApplication::_initCommon(void)
     static const char* kQGCVehicle      = "QGroundControl.Vehicle";
 
     QSettings settings;
+    
+    // 3DR, LRW, Set up the MFi link
+    TDRMFiInterface *mFiInterface = [TDRMFiInterface alloc];
+    [mFiInterface init];
+    [mFiInterface initVideoStream];
+    
+//    // Setup UDP link for streaming MFi video data
+//    LinkConfiguration* linkConfig = toolpobox()->linkManager()->createConfiguration(LinkConfiguration::TypeUdp, "3DRVideoUDP");
+//    //linkConfig->port
+//    SharedLinkConfigurationPointer configPtr = toolbox()->linkManager()->addConfiguration(linkConfig);
+//    LinkInterface* pLink = toolbox()->linkManager()->createConnectedLink(configPtr);
+    
+    
+    //UDPLink* udpLink = new UDPLink(linkConfig)
+    //UDPConfiguration* udpConfig = new UDPConfiguration();
+    //udpConfig->setDynamic(true);
+    //SharedLinkConfigurationPointer config = addConfiguration(linkConfig);
+    //SharedLinkConfigurationPointer config = addConfiguration(udpConfig);
+    //createConnectedLink(config);
 
     // Register our Qml objects
 
